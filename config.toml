@@ -1,5 +1,5 @@
 # Site settings
-baseURL = "http://awesome-Catherine-website.netlify.app/"
+baseURL = "https://awesome-Catherine-website.netlify.app/"
 languageCode = "en-us"
 title = "Portfolio website for Catherine(Zihan) Xu"
 theme = "forty"
