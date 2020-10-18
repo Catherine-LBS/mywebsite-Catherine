@@ -37,8 +37,8 @@ disqusShortname = ""
 
   # Navigation Section
   [params.navigation]
-    title = "Forty"
-    subtitle = "By HTML5 Up"
+    title = "Catherine Xu"
+    subtitle = "逃避自由|愛してる"
     menu = "Menu"
     # Optional logo as brand stored in img/
     # logo = "logo.png"
@@ -81,8 +81,8 @@ disqusShortname = ""
   [params.banner]
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
-    title = "Hi, my name is Forty"
-    subtitle = "A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP\nAND RELEASED UNDER THE CREATIVE COMMONS."
+    title = "Hi, my name is Catherine"
+    subtitle = "Welcome to my fantastic world. Hope to strike a chord."
     buttonText = "Get Started"
 
 
@@ -126,11 +126,12 @@ disqusShortname = ""
   # Section Type Two
   [params.two]
     enable = true
-    title = "Massa libero"
+    title = "As a banker driven by Data Analytics"
     subtitle = """
-    Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. 
-    Mauris aliquet magna magna sed nunc rhoncus pharetra. 
-    Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. 
+    I want to be a banker in my future career. As we all know, bankers always need to collect so much 
+    financial data to support analysis about industries or companies. It will take some time. Therefore,
+    I plan to use R to capture first-hand information to do basic analysis about the change of data. Thus,
+    it will be more convenient for bankers to further their research and come up with brilliant ideas for clients. 
     """
 
   # buttonText = "Get Started"
