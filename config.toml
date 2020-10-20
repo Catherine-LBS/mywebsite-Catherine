@@ -38,7 +38,7 @@ disqusShortname = ""
   # Navigation Section
   [params.navigation]
     title = "Catherine Xu"
-    subtitle = "逃避自由|愛してる"
+    subtitle = "愛してる|拥抱自由"
     menu = "Menu"
     # Optional logo as brand stored in img/
     # logo = "logo.png"
@@ -83,6 +83,7 @@ disqusShortname = ""
     # the 'static/img' folder.
     title = "Hi, my name is Catherine(Zihan) Xu"
     subtitle = "Love the past, play the future."
+    image = "banner.jpg"
     buttonText = "Get Started"
 
 
@@ -92,28 +93,28 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "Who is Catherine"
+      title = "Who is Catherine?"
       subtitle = "Quickly know about 'Her'"
       image = "pic01.jpg"
-      url = "projects/project1"
+      url = "blogs/blog5"
 
     [[params.tiles.showcase]]
       title = "CDC COVID-19 Public Use Data"
       subtitle = "Covid death % by age group, sex"
       image = "pic02.jpg"
-      url = "projects/project2"
+      url = "blogs/blog6"
 
     [[params.tiles.showcase]]
       title = "General Social Survey (GSS)"
       subtitle = "University graduates tend to use Twitter"
       image = "pic03.jpg"
-      url = "projects/project3"
+      url = "blogs/blog7"
 
     [[params.tiles.showcase]]
       title = "GDP component and proportion comparison"
       subtitle = "GDP components are varying over time and among countries"
       image = "pic04.jpg"
-      url = "projects/project4"
+      url = "blogs/blog8"
     # You can make more showcases by copy and pasting the code above
 
   [params.blog]
