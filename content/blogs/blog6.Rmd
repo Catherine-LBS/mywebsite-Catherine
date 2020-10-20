@@ -1,0 +1,119 @@
+---
+categories:
+- ""
+- ""
+date: "2020-10-20"
+description: "Where do people drink the most beer, wine and spirits?"
+draft: false
+image: pic09.jpg
+keywords: ""
+slug: blog6
+title: Analysis about drinks
+---
+
+```{r, setup, echo=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(fivethirtyeight)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
+library(rvest)    # scrape websites
+library(purrr)  
+library(lubridate) #to handle dates
+```
+
+# Where Do People Drink The Most Beer, Wine And Spirits?
+
+Back in 2014, [fivethiryeight.com](https://fivethirtyeight.com/features/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/) published an article on alcohol consumption in different countries. The data `drinks` is available as part of the `fivethirtyeight` package. The data is downloaded and stored in the dataset alcohol_direct
+
+```{r, load_alcohol_data}
+library(fivethirtyeight)
+data(drinks)
+```
+
+After saving the data, is important to understand the number of variables and their type (e.g. string, double, integer). Hence, we use the functions glimpse and skim.
+
+```{r glimpse_skim_data}
+glimpse(drinks)
+skim(drinks)
+```
+Looking at the tables above, there are 5 variables in the data set:
+
+1. country: string variable with no missing values
+2. beer_servings: double variable with no missing values
+3. spirit_servings: double variable with no missing values
+4. wine_servings: double variable with no missing values
+5. total_litres_of_pure_alcohol: double variable with no missing values
+
+Next, we make a plot that shows the top 25 alcohol consuming countries for each type of alcohol. Below, we show the graph for the top 25 beer consuming countries.
+
+```{r beer_plot}
+drinks %>%  
+  slice_max(beer_servings, n=25) %>% 
+  
+  ggplot(aes(x = beer_servings, y = reorder(country, beer_servings), fill=country)) + 
+    geom_col() + 
+    scale_fill_grey() +
+    xlab("Number of beer servings") +
+    ylab("Country") +
+    labs(title = "Top 25 Beer consuming countries") +
+    theme(legend.position = "none") + 
+    NULL
+```
+
+Then, we make a plot that shows the top 25 wine consuming countries.
+
+```{r wine_plot}
+drinks %>% 
+  slice_max(wine_servings, n=25) %>% 
+  ggplot(aes(x = wine_servings, y = reorder(country, wine_servings), fill=country)) + 
+    geom_col() + 
+    scale_fill_grey() +
+    xlab("Number of wine servings") +
+    ylab("Country") +
+    labs(title = "Top 25 Wine consuming countries") +
+    theme(legend.position = "none") + 
+    NULL
+```
+
+Finally, we make a plot that shows the top 25 spirit consuming countries.
+
+```{r spirit_plot}
+drinks %>% 
+  slice_max(spirit_servings, n=25) %>% 
+  
+ggplot(aes(x = spirit_servings, y = reorder(country, spirit_servings), fill=country)) + 
+    geom_col() + 
+    scale_fill_grey() +
+    xlab("Number of spirit servings") +
+    ylab("Country") +
+    labs(title = "Top 25 Spirit consuming countries") +
+    theme(legend.position = "none") + 
+    NULL
+```
+
+Alcohol consumption is relevant for developing public health policies in each country. Since by consuming more alcohol, the health problems will increase. By analyzing the first graph, we can evidence that almost all of the top 25 beer consuming countries have a yearly consumption above 250 servings, with Namibia as the highest beer consuming country. On the other hand, for wine consumption, France leads with approximately 370 serving per year, which is far away higher from the 25th wine consuming country, which means a wider dispersion within this data. Finally, for spirit consumption, Grenada is the highest spirit drinking country. Grenada with 440+ number of spirit servings double Mongolia’s consumption (25th spirit consuming country by ranking).
+
+Now, when we evaluate all the data as a whole, we can say that spirit consumption in Grenada is higher than all the other types of alcohol consumption. Nevertheless, by looking at the skim function at the beginning of this document, we saw that the drink that has a higher average consumption is beer, mainly for its vast spread around the world. Finally, for making a more robust analysis I suggest, for further works, to determine the average consumption per capita, because some countries have an extremely high number of servings but it is due to their wide population, like France.

@@ -1,0 +1,70 @@
+---
+title: "General Social Survey (GSS)"
+date: '2020-10-20'
+description: "University graduates tend to use Twitter"
+draft: no
+image: pic07.jpg
+keywords: ""
+slug: blog7
+categories:
+- ''
+- ''
+---
+
+
+
+<hr />
+<div id="general-social-survey-gss" class="section level1">
+<h1>General Social Survey (GSS)</h1>
+<p>The <a href="http://www.gss.norc.org/">General Social Survey (GSS)</a> gathers data on American society in order to monitor and explain trends in attitudes, behaviours, and attributes. Many trends have been tracked for decades, so one can see the evolution of attitudes, etc in American Society.</p>
+<pre class="r"><code>gss &lt;- read_csv(here::here(&quot;data&quot;, &quot;smallgss2016.csv&quot;), 
+                na = c(&quot;&quot;, &quot;Don&#39;t know&quot;,
+                       &quot;No answer&quot;, &quot;Not applicable&quot;))
+glimpse(gss)</code></pre>
+<pre><code>## Rows: 2,867
+## Columns: 7
+## $ emailmin &lt;chr&gt; &quot;0&quot;, &quot;30&quot;, &quot;NA&quot;, &quot;10&quot;, &quot;NA&quot;, &quot;0&quot;, &quot;0&quot;, &quot;NA&quot;, &quot;0&quot;, &quot;NA&quot;, &quot;0...
+## $ emailhr  &lt;chr&gt; &quot;12&quot;, &quot;0&quot;, &quot;NA&quot;, &quot;0&quot;, &quot;NA&quot;, &quot;2&quot;, &quot;40&quot;, &quot;NA&quot;, &quot;0&quot;, &quot;NA&quot;, &quot;2...
+## $ snapchat &lt;chr&gt; &quot;NA&quot;, &quot;No&quot;, &quot;No&quot;, &quot;NA&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;NA&quot;, &quot;Yes&quot;, &quot;NA&quot;, &quot;N...
+## $ instagrm &lt;chr&gt; &quot;NA&quot;, &quot;No&quot;, &quot;No&quot;, &quot;NA&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;NA&quot;, &quot;Yes&quot;, &quot;NA&quot;, &quot;...
+## $ twitter  &lt;chr&gt; &quot;NA&quot;, &quot;No&quot;, &quot;No&quot;, &quot;NA&quot;, &quot;No&quot;, &quot;No&quot;, &quot;NA&quot;, &quot;No&quot;, &quot;NA&quot;, &quot;No&quot;...
+## $ sex      &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Mal...
+## $ degree   &lt;chr&gt; &quot;Bachelor&quot;, &quot;High school&quot;, &quot;Bachelor&quot;, &quot;High school&quot;, &quot;Gra...</code></pre>
+<p>We will be creating 95% confidence intervals for population parameters.</p>
+<div id="twitter-by-education-level" class="section level2">
+<h2>Twitter, by education level</h2>
+<p>We estimate the <em>population</em> proportion of Twitter users by education level in 2016.</p>
+<p>There are 5 education levels in variable <code>degree</code> which, in ascneding order of years of education, are Lt high school, High School, Junior college, Bachelor, Graduate.</p>
+<pre class="r"><code>gss_twitter &lt;- gss %&gt;%
+  # Turn degree into a factor variable 
+  mutate(degree = factor(degree, 
+                         levels = c(&quot;Lt high school&quot;, &quot;High School&quot;, 
+                                    &quot;Junior college&quot;, &quot;Bachelor&quot;, &quot;Graduate&quot;), 
+                         ordered = TRUE)) %&gt;%
+  # Create new variable bachelor_graduate
+  mutate(bachelor_graduate = 
+           ifelse(degree &gt;= &quot;Bachelor&quot;, &quot;Yes&quot;, 
+                 ifelse(degree == &quot;NA&quot;, &quot;NA&quot;, &quot;No&quot;))) %&gt;% 
+  # Calculate upper and lower level for 95% confidence interval 
+  # using CI formula for proportions
+ summarize(answered = count(bachelor_graduate != &quot;NA&quot;), 
+            answered_yes = count(bachelor_graduate == &quot;Yes&quot;), 
+            prop_yes = answered_yes/ answered, 
+            prop_no = 1- prop_yes, 
+            se_yes = sqrt(prop_yes*(1-prop_yes)/answered), 
+            se_no = sqrt(prop_no*(1-prop_no)/answered)) %&gt;%
+ summarize(prop_yes, 
+            prop_no, 
+            lower95_yes = prop_yes - 0.95*se_yes, 
+            upper95_yes = prop_yes + 0.95 *se_yes, 
+            lower95_no = prop_no - 0.95*se_no, 
+            upper95_no = prop_no + 0.95 *se_no)
+
+gss_twitter</code></pre>
+<pre><code>## # A tibble: 1 x 6
+##   prop_yes prop_no lower95_yes upper95_yes lower95_no upper95_no
+##      &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1    0.611   0.389       0.598       0.623      0.377      0.402</code></pre>
+<p>As you can see, the confidence intervals for bachelor graduates using twitter and bachelor graduates not using twitter don’t overlap. Indeed, both confidence intervals are very small.</p>
+</div>
+</div>
