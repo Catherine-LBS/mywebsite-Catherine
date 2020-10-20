@@ -81,8 +81,8 @@ disqusShortname = ""
   [params.banner]
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
-    title = "Hi, my name is Catherine"
-    subtitle = "Welcome to my fantastic world. Hope to strike a chord."
+    title = "Hi, my name is Catherine(Zihan) Xu"
+    subtitle = "Love the past, play the future."
     buttonText = "Get Started"
 
 
@@ -93,25 +93,25 @@ disqusShortname = ""
     
     [[params.tiles.showcase]]
       title = "Who is Catherine"
-      subtitle = "Quickly know about 'Her'!"
+      subtitle = "Quickly know about 'Her'"
       image = "pic01.jpg"
       url = "blogs/blog1"
 
     [[params.tiles.showcase]]
-      title = "Cultural Appropriation-Suicide/homicide rates between races"
-      subtitle = "Embrace racial differences with cultural appreciation"
+      title = "CDC COVID-19 Public Use Data"
+      subtitle = "Covid death % by age group, sex"
       image = "pic02.jpg"
       url = "blogs/blog2"
 
     [[params.tiles.showcase]]
-      title = "Trump's Approval Margins"
-      subtitle = "Do Trump's Approval Margins keep changing across recent years?"
+      title = "General Social Survey (GSS)"
+      subtitle = "University graduates tend to use Twitter"
       image = "pic03.jpg"
       url = "blogs/blog3"
 
     [[params.tiles.showcase]]
       title = "GDP component and proportion comparison"
-      subtitle = "Are GDP components varying over time and among countries?"
+      subtitle = "GDP components are varying over time and among countries"
       image = "pic04.jpg"
       url = "blogs/blog4"
     # You can make more showcases by copy and pasting the code above
