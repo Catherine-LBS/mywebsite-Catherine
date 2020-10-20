@@ -8,6 +8,46 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 31 Oct 2017 22:27:21 -0500</lastBuildDate><atom:link href="/blogs/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Analysis about drinks</title>
+      <link>/blogs/blog6/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/blog6/</guid>
+      <description>Where Do People Drink The Most Beer, Wine And Spirits?Back in 2014, fivethiryeight.com published an article on alcohol consumption in different countries. The data drinks is available as part of the fivethirtyeight package. The data is downloaded and stored in the dataset alcohol_direct
+library(fivethirtyeight)data(drinks)After saving the data, is important to understand the number of variables and their type (e.g. string, double, integer). Hence, we use the functions glimpse and skim.</description>
+    </item>
+    
+    <item>
+      <title>GDP component and proportion comparison</title>
+      <link>/blogs/blog8/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/blog8/</guid>
+      <description>GDP components over time and among countriesAt the risk of oversimplifying things, the main components of gross domestic product, GDP are personal consumption (C), business investment (I), government spending (G) and net exports (exports - imports). You can read more about GDP and the different approaches in calculating at the Wikipedia GDP page.
+The GDP data we will look at is from the United Nations’ National Accounts Main Aggregates Database, which contains estimates of total GDP and its components for all countries from 1970 to today.</description>
+    </item>
+    
+    <item>
+      <title>General Social Survey (GSS)</title>
+      <link>/blogs/blog7/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/blog7/</guid>
+      <description>General Social Survey (GSS)The General Social Survey (GSS) gathers data on American society in order to monitor and explain trends in attitudes, behaviours, and attributes. Many trends have been tracked for decades, so one can see the evolution of attitudes, etc in American Society.
+gss &amp;lt;- read_csv(here::here(&amp;quot;data&amp;quot;, &amp;quot;smallgss2016.csv&amp;quot;), na = c(&amp;quot;&amp;quot;, &amp;quot;Don&amp;#39;t know&amp;quot;,&amp;quot;No answer&amp;quot;, &amp;quot;Not applicable&amp;quot;))glimpse(gss)## Rows: 2,867## Columns: 7## $ emailmin &amp;lt;chr&amp;gt; &amp;quot;0&amp;quot;, &amp;quot;30&amp;quot;, &amp;quot;NA&amp;quot;, &amp;quot;10&amp;quot;, &amp;quot;NA&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;NA&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;NA&amp;quot;, &amp;quot;0.</description>
+    </item>
+    
+    <item>
+      <title>Who is Catherine?</title>
+      <link>/blogs/blog5/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/blog5/</guid>
+      <description>Self-Introduction of Zihan Xuphoto of Zihan Xu &amp;amp; her friends
+Name: Zihan XuEnglish name: CatherineDouble Masters’ Program: Master in Financial Analysis of LBS &amp;amp; Master in Finance of Fudan UniversityGraduate University: Sichuan UniversityMajor: AccountingNationality: ChinaHobbies: Singing, Dancing, Traveling, Crux PlayFavorite food: Hotpot, Cheese CakeConstellation: Libra</description>
+    </item>
+    
+    <item>
       <title>Aliquam</title>
       <link>/blogs/aliquam/</link>
       <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
